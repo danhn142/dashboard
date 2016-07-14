@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animals!</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+</head>
+<body>
+	<div class = "container">
+		<h1>I love animals</h1>
+		<div class = "row">
+			<div class="col-md-6">
+				<h3>List of animals</h3>
+				<table class="table table-bordered">
+
+					<thead>
+						<th>
+							Animals
+						</th>
+						<th>
+							Action
+						</th>
+						<th>
+							Remove
+						</th>
+					</thead>
+					<tbody>
+						<% for(var i = 0; i< data.length; i++){%>
+						<tr>
+							<td><%=data[i].name%></td>					
+							<td><a href="/animals/<%= data[i].id %>">Show</a> | <a href="/animals/<%= data[i].id %>/edit">Edit</a>	
+							</td>
+							
+							<td>
+								<form action = "/animals/<%=data[i].id%>/destroy" method= "post">
+									<input type = "submit" value = "Destroy">
+								</form>
+							</td>
+						</tr>
+						<% } %>
+					</tbody>
+				  
+				</table>
+			</div>
+			
+			<div class="col-md-6">
+				
+				<h3>Add an Animal</h3>
+				<form action = "/animals" method = "post">
+					<div class="form-group">
+					    <label for="name">Animal</label>
+					    <input type="text" class="form-control" id="name" name="name">
+					</div>
+					<input type="submit" class="btn btn-default pull-right" value = "Create!">
+				</form>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
